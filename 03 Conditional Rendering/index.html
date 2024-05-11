@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>03 Conditional Rendering</title>
+    <!-- Import Styles -->
+    <link
+      rel="stylesheet"
+      href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img v-bind:src="image" />
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+            <!-- We can combine the v-if directive with its sister directive v-else 
+              to display another element as the fallback if the first condition 
+              turns out to be false. However, the v-show directive is more performant
+              because it only toggle the visibility of an element, like a modal. -->
+            <!-- <p v-if="inStock">In stock</p> -->
+            <!-- <p v-else>Out of stock</p> -->
+            <p v-show="inStock">In stock</p>
+            <p v-if="inventory > 10">We have more than 10 pairs remaining.</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost out of stock. We have less than 10 pairs remaining.</p>
+            <p v-else-if="inventory == 0 || !inStock">Out of stock</p>
+            <p v-else>Contact us to check stocks.</p>
+            <p v-if="onSale">On Sale today!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import App -->
+    <script src="./main.js"></script>
+
+    <!-- Mount App into DOM -->
+    <script>
+      const mountedApp = app.mount('#app');
+    </script>
+  </body>
+</html>
