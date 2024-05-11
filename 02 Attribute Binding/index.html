@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>02 Attribute Binding</title>
+    <!-- Import Styles -->
+    <link
+      rel="stylesheet"
+      href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <!-- To create a bond between an HTML element’s attribute and a value 
+              from your Vue app’s data, we’ll use a Vue directive called v-bind. -->
+            <img v-bind:src="image" />
+            <!-- The shorthand for v-bind is <img v-bind:src="image" />
+              Since there’s so many different HTML attributes, there are many use
+              cases for v-bind. For example, you might be binding a description
+              to an alt attribute, binding a URL to an href, binding some dynamic
+              styles to a class or style attribute, disabling and enabling a button. -->
+            <a :href="url">This Vue code on GitHub</a>
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import App -->
+    <script src="./main.js"></script>
+
+    <!-- Mount App into DOM -->
+    <script>
+      const mountedApp = app.mount('#app');
+    </script>
+  </body>
+</html>
